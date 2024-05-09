@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "YouTube Extension",
+  "version": "1.0",
+  "permissions": [
+    "tabs",
+    "storage",
+    "activeTab",
+    "*://http://127.0.0.1:8000/*",
+    "identity",
+    "identity.email"
+  ],
+  "action": {
+    "default_popup": "hello.html",
+    "default_icon": {
+      "16": "hello_extensions.png",
+      "48": "hello_extensions.png",
+      "128": "hello_extensions.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content.js"],
+      "css": ["style/styles.css"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "hello_extensions.png",
+    "48": "hello_extensions.png",
+    "128": "hello_extensions.png"
+  },
+  "web_accessible_resources": [
+    {
+      "matches": ["<all_urls>"],
+      "resources": ["media/*"]
+    }
+  ]
+}
